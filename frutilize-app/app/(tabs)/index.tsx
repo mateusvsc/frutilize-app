@@ -8,7 +8,7 @@ export default function IndexScreen() {
     <ThemedView style={styles.container}>
       <ThemedText type="title">Fruitilize - Início</ThemedText>
       <ThemedText type="default">
-        Bem-vindo ao app Fruitilize! Esta é a primeira aba (Home).
+        Bem-vindo ao app Frutilize! Esta é a primeira aba (Home).
       </ThemedText>
     </ThemedView>
   );

@@ -6,7 +6,7 @@ import { ThemedView } from '../components/themed-view';
 export default function ModalScreen() {
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">Modal Fruitilize</ThemedText>
+      <ThemedText type="title">Modal Frutilize</ThemedText>
       <ThemedText type="default">
         Este é o conteúdo do modal.
       </ThemedText>
