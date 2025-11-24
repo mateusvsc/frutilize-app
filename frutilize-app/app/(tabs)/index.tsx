@@ -1,14 +1,14 @@
-// app/(tabs)/ModalScreen.tsx
+// app/(tabs)/index.tsx
 import { StyleSheet } from 'react-native';
 import { ThemedText } from '../../components/themed-text';
 import { ThemedView } from '../../components/themed-view';
 
-export default function ModalScreen() {
+export default function IndexScreen() {
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">Modal Fruitilize</ThemedText>
+      <ThemedText type="title">Fruitilize - Início</ThemedText>
       <ThemedText type="default">
-        Informações detalhadas sobre frutas e nutrição.
+        Bem-vindo ao app Fruitilize! Esta é a primeira aba (Home).
       </ThemedText>
     </ThemedView>
   );
