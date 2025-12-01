@@ -4,28 +4,26 @@ import { ThemedView } from '../../components/themed-view';
 import { ThemedText } from '../../components/themed-text';
 import CartItem from '../../components/ui/CartItem';
 import { useCart } from '../../hooks/useCart';
-import { sendWhatsAppOrder, formatPrice } from '../../utils/whatsapp';
+import { formatPrice } from '../../utils/whatsapp';
+import { useRouter } from 'expo-router';
 
 export default function CartScreen(): React.JSX.Element {
   const { items, clearCart, getTotal, getTotalItems } = useCart();
+  const router = useRouter();
+  
   const total = getTotal();
   const totalItems = getTotalItems();
 
-  const handleCheckout = async () => {
+  const handleCheckout = () => {
     if (items.length === 0) {
       Alert.alert('Carrinho vazio', 'Adicione itens ao carrinho antes de finalizar o pedido.');
       return;
     }
 
-    try {
-      await sendWhatsAppOrder(items, total);
-      clearCart();
-    } catch (error) {
-      Alert.alert('Erro', 'Não foi possível enviar o pedido para o WhatsApp.');
-    }
+    // Navega para a tela de checkout - CORRIGIDO
+    router.push('./checkout');
   };
 
-  // Tela de carrinho vazio - completamente centralizada
   if (items.length === 0) {
     return (
       <View style={styles.emptyScreenContainer}>
@@ -42,7 +40,6 @@ export default function CartScreen(): React.JSX.Element {
     );
   }
 
-  // Tela de carrinho com itens
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.header}>
@@ -68,7 +65,9 @@ export default function CartScreen(): React.JSX.Element {
         </ThemedView>
 
         <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
-          <ThemedText style={styles.checkoutText}>📱 Enviar Pedido para WhatsApp</ThemedText>
+          <ThemedText style={styles.checkoutText}>
+            ➡️ Ir para Checkout
+          </ThemedText>
         </TouchableOpacity>
       </ThemedView>
     </ThemedView>
@@ -76,10 +75,9 @@ export default function CartScreen(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  // Container especial para tela vazia
   emptyScreenContainer: {
     flex: 1,
-    backgroundColor: '#FFFFFF', // ou a cor do seu tema
+    backgroundColor: '#FFFFFF',
   },
   container: {
     flex: 1,

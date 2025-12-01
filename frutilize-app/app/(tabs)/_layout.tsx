@@ -48,6 +48,16 @@ export default function TabLayout(): React.JSX.Element {
           ),
         }}
       />
+      {/* Adicione a tela de admin aqui */}
+      <Tabs.Screen
+        name="admin"
+        options={{
+          title: 'Admin',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings-outline" size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
